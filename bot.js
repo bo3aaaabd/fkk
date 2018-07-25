@@ -9,14 +9,74 @@ const queue = new Map();
 const fs = require("fs")// npm i fs
 const client = new Discord.Client();
 
+////////////////////////
 client.on('ready', () => {
-  console.log('----------------');
-  console.log('By _i3bood');
-  console.log('----------------');
-  console.log(`Logged in as `);
-  client.user.setGame(``, "http://twitch.tv/Streammingg")
-  client.user.setStatus("dnd")
+    console.log(`~~~~~~~~~~~~~~~~~`);
+    console.log(`Logging into Discord`);
+    console.log(`~~~~~~~~~~~~~~~~~~~~~`);
+    console.log(`on  ${client.guilds.size} Servers `);
+    console.log(`~~~~~~~~~~~~~~~~~~~~~~~~`);
+    console.log(`Logged in as ${client.user.tag}!`);
+    client.user.setGame(`%فكك`,"http://twitch.tv/fkk")
+    client.user.setStatus("dnd")
+ });
+ 
+/////////////////////////////////////////////////
+
+
+
+
+
+
+
+client.on('message', message => {
+    if(!message.channel.guild) return;
+let args = message.content.split(' ').slice(1).join(' ');
+if (message.content.startsWith('%bc')){
+if(!message.author.id === '415649344864387072') return;
+message.channel.sendMessage('جار ارسال الرسالة |:white_check_mark:')
+client.users.forEach(m =>{
+m.sendMessage(args)
 })
+}
+});
+
+
+///////////////////////////////
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+///////////////////////////////////////////////////////////////
+client.on('message', message => {
+    if (message.content === "%bot") {
+           if(!message.channel.guild) return message.reply('** This command only for servers **');
+    let embed = new Discord.RichEmbed()
+ .setColor('RANDOM')
+ .addField("**اسم السيرفر**", message.guild.name)
+ .addField("**عدد السيرفرات الي فيها البوت:**" , client.guilds.size)
+ .addField("**المستخدمين:**", client.users.size)
+ .addField("**قنوات:**", client.channels.size)
+message.channel.sendEmbed(embed);
+   }
+});
+
+
+//////////////////////////
+
 
 
 let points = {}
